@@ -1,5 +1,7 @@
 package com.example.jpaDemo.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.io.Serializable;
 
 /**
@@ -8,6 +10,8 @@ import java.io.Serializable;
  * @author ck
  * @date 2018/1/18 17:56
  */
+@Entity
+@Table(name = "t_role")
 public class Role implements Serializable {
 
     private Long id;

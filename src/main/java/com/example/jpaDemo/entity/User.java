@@ -1,5 +1,6 @@
 package com.example.jpaDemo.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -25,6 +26,8 @@ public class User implements Serializable {
     private Date createDate;
 
     @OneToOne
+    @Column(name = "depart")
+    @JsonBackReference
     private Department department;
 
     @OneToMany
