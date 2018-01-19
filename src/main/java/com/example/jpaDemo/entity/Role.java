@@ -11,7 +11,7 @@ import java.io.Serializable;
  * @date 2018/1/18 17:56
  */
 @Entity
-@Table(name = "t_role")
+@Table(name = "role")
 public class Role implements Serializable {
 
     private Long id;
