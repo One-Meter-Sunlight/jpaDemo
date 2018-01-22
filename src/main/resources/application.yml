@@ -5,3 +5,11 @@ server:
     uri-encoding: utf-8
 logging:
   level: debug
+spring:
+  jpa:
+    database: mysql
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+      naming:
+        strategy: org.hibernate.cfg.ImprovedNamingStrategy

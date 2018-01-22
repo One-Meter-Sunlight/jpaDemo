@@ -1,6 +1,8 @@
 package com.example.jpaDemo.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -16,19 +18,20 @@ import java.util.List;
  */
 @Entity
 @Table(name = "user")
+@ApiModel(value = "职员信息")
 public class User implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @ApiModelProperty(value = "ID", example = "1", position = 1, hidden = true)
     private Long id;
+
+    @ApiModelProperty(value = "姓名", example = "张飞", position = 2)
     private String name;
+
+    @ApiModelProperty(value = "日期", example = "2018-01-22 10:18:00", position = 3)
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date createDate;
-
-    @OneToOne
-    @Column(name = "depart")
-    @JsonBackReference
-    private Department department;
 
     @OneToMany
     private List<Role> roles;
@@ -55,14 +58,6 @@ public class User implements Serializable {
 
     public void setCreateDate(Date createDate) {
         this.createDate = createDate;
-    }
-
-    public Department getDepartment() {
-        return department;
-    }
-
-    public void setDepartment(Department department) {
-        this.department = department;
     }
 
     public List<Role> getRoles() {
