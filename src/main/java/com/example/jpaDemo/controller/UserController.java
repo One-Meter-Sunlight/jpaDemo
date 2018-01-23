@@ -4,6 +4,8 @@ import com.alibaba.druid.support.json.JSONUtils;
 import com.example.jpaDemo.entity.User;
 import com.example.jpaDemo.resp.UserRespository;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -75,6 +77,7 @@ public class UserController {
      * @param id
      */
     @RequestMapping(value = "getOne", method = RequestMethod.GET)
+    @ApiOperation(value = "通过ID查询对象")
     public void getOne(@RequestParam(value = "id") Long id) {
         if (logger.isDebugEnabled()) {
             logger.debug(String.valueOf(id));

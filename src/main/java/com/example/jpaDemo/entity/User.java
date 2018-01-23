@@ -1,14 +1,12 @@
 package com.example.jpaDemo.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Date;
-import java.util.List;
+import java.sql.Timestamp;
 
 /**
  * 职员
@@ -31,10 +29,7 @@ public class User implements Serializable {
 
     @ApiModelProperty(value = "日期", example = "2018-01-22 10:18:00", position = 3)
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private Date createDate;
-
-    @OneToMany
-    private List<Role> roles;
+    private Timestamp createDate;
 
     public Long getId() {
         return id;
@@ -52,19 +47,11 @@ public class User implements Serializable {
         this.name = name;
     }
 
-    public Date getCreateDate() {
+    public Timestamp getCreateDate() {
         return createDate;
     }
 
-    public void setCreateDate(Date createDate) {
+    public void setCreateDate(Timestamp createDate) {
         this.createDate = createDate;
-    }
-
-    public List<Role> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(List<Role> roles) {
-        this.roles = roles;
     }
 }

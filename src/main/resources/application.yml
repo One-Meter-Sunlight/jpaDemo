@@ -3,13 +3,17 @@ server:
   context-path: /demo
   tomcat:
     uri-encoding: utf-8
-logging:
-  level: debug
+---
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://127.0.0.1:3306/test?autoReconnect=true&useUnicode=true&characterEncoding=UTF-8
+    username: root
+    password: root
+---
 spring:
   jpa:
-    database: mysql
     show-sql: true
     hibernate:
       ddl-auto: update
-      naming:
-        strategy: org.hibernate.cfg.ImprovedNamingStrategy

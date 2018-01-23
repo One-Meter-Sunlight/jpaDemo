@@ -4,7 +4,6 @@ import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.List;
 
 /**
  * 角色
@@ -24,9 +23,6 @@ public class Role implements Serializable {
     @ApiModelProperty(value = "角色名", example = "超级管理员", position = 2)
     private String name;
 
-    @OneToMany
-    private List<User> users;
-
     public Long getId() {
         return id;
     }
@@ -43,11 +39,4 @@ public class Role implements Serializable {
         this.name = name;
     }
 
-    public List<User> getUsers() {
-        return users;
-    }
-
-    public void setUsers(List<User> users) {
-        this.users = users;
-    }
 }
