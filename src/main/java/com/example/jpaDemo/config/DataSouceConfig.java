@@ -21,9 +21,6 @@ import java.util.Properties;
 @Configuration
 public class DataSouceConfig {
 
-    private static final String MAPPER_LOCATION = "classpath*:com/example/jpaDemo/mapper/*Mapper.xml";
-    private static final String MYBATIS_CONFIG = "classpath:mybatis-config.xml";
-
     @Bean(name = "dbProperties")
     public Properties dbProperties() throws IOException {
         Properties properties = new Properties();
