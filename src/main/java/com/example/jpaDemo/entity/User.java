@@ -20,15 +20,17 @@ import java.sql.Timestamp;
 public class User implements Serializable {
 
     @Id
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @ApiModelProperty(value = "ID", example = "1", position = 1, hidden = true)
     private Long id;
 
+    @Column(name = "name")
     @ApiModelProperty(value = "姓名", example = "张飞", position = 2)
     private String name;
 
-    @ApiModelProperty(value = "日期", example = "2018-01-22 10:18:00", position = 3)
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @Column(name = "create_date")
+    @ApiModelProperty(value = "日期", example = "1516947412747", position = 3)
     private Timestamp createDate;
 
     public Long getId() {

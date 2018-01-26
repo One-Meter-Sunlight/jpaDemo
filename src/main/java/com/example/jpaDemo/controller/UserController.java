@@ -1,10 +1,9 @@
 package com.example.jpaDemo.controller;
 
-import com.alibaba.druid.support.json.JSONUtils;
 import com.example.jpaDemo.entity.User;
 import com.example.jpaDemo.resp.UserRespository;
+import com.example.jpaDemo.util.JSONUtil;
 import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -37,10 +36,11 @@ public class UserController {
      *
      * @param user
      */
+    @ApiOperation(value = "添加对象")
     @RequestMapping(value = "add", method = RequestMethod.POST)
     public void add(@RequestBody User user) {
         if (logger.isDebugEnabled()) {
-            logger.debug("参数==>" + JSONUtils.toJSONString(user));
+            logger.debug("参数==>" + JSONUtil.toJSONString(user));
         }
         userRespository.save(user);
     }
@@ -50,6 +50,7 @@ public class UserController {
      *
      * @param id
      */
+    @ApiOperation(value = "删除对象")
     @RequestMapping(value = "delete", method = RequestMethod.GET)
     public void delete(@RequestParam(value = "id") Long id) {
         if (logger.isDebugEnabled()) {
@@ -63,10 +64,11 @@ public class UserController {
      *
      * @param user
      */
+    @ApiOperation(value = "修改对象")
     @RequestMapping(value = "udpate", method = RequestMethod.POST)
     public void udpate(@RequestBody User user) {
         if (logger.isDebugEnabled()) {
-            logger.debug("参数==>" + JSONUtils.toJSONString(user));
+            logger.debug("参数==>" + JSONUtil.toJSONString(user));
         }
         userRespository.save(user);
     }
@@ -76,26 +78,27 @@ public class UserController {
      *
      * @param id
      */
+    @ApiOperation(value = "查询对象")
     @RequestMapping(value = "getOne", method = RequestMethod.GET)
-    @ApiOperation(value = "通过ID查询对象")
     public void getOne(@RequestParam(value = "id") Long id) {
         if (logger.isDebugEnabled()) {
             logger.debug(String.valueOf(id));
         }
         User user = userRespository.getOne(id);
         if (logger.isDebugEnabled()) {
-            logger.debug("返回结果==>" + JSONUtils.toJSONString(user));
+            logger.debug("返回结果==>" + JSONUtil.toJSONString(user));
         }
     }
 
     /**
      * 分页查询
      */
+    @ApiOperation(value = "分页查询对象")
     @RequestMapping(value = "getAllPage", method = RequestMethod.GET)
     public void getAllPage() {
         Page<User> page = (Page<User>) userRespository.findAll();
         if (logger.isDebugEnabled()) {
-            logger.debug("返回结果==>" + JSONUtils.toJSONString(page));
+            logger.debug("返回结果==>" + JSONUtil.toJSONString(page));
         }
     }
 
